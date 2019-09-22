@@ -1,9 +1,10 @@
 import csv
+import json
 
 
 def get_case_type_urls_from_csv():
     filename = 'data.csv'
-    l = []
+    data = []
     line_count = 0
 
     # open stream
@@ -20,11 +21,16 @@ def get_case_type_urls_from_csv():
             else:
                 d = {
                     'url': row["Case Type"],
+                    'state_name': row["State Display Name"],
                     'state_interim': row["StateFinal"],
                     'district_interim': row["DistrictFinal"]
                 }
-                l.append(d)
+                data.append(d)
                 line_count += 1
 
-    return l
+    return data
 
+
+def write_dict_into_json_file(file_name, dict_):
+    with open(file_name, "w+") as json_file:
+        json.dump(dict_, json_file)
