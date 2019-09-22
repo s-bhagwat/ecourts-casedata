@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-from csv_reader import get_urls
+from court_scraper import access_url_from_csv
 
 COURT_TYPE_COMPLEX = 0
 COURT_TYPE_ESTABLISHMENT = 1
@@ -57,6 +57,6 @@ def run_get_all_types(data):
     return data
 
 
-urls = get_urls()[:1]
+urls = access_url_from_csv()[:1]
 r = run_get_all_types(urls)
 print(r)
