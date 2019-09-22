@@ -1,7 +1,7 @@
 import csv
 
 
-def access_url_from_csv():
+def get_case_type_urls_from_csv():
     filename = 'data.csv'
     l = []
     line_count = 0
