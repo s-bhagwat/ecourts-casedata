@@ -12,15 +12,24 @@ def main():
 
 
 def access_url_from_csv():
-    filename = sys.argv[1]
+    # set up default behaviour if no cli arg is given
+    if len(sys.argv < 2):
+        filename = "court_url.csv"
+    else:
+        filename = sys.argv[1]
+
     # open stream
     with open(filename) as csv_file:
+        # create a dict
         csv_reader = csv.DictReader(csv_file, delimiter=",")
+
+        # set a max row value
         max_row = 5
         for row in csv_reader:
-            url = row["Case Type"]
+            start_scraper(row["Case Type"])
             max_row -= 1
             if max_row == 0:
+                # ends it early so we don't have to loop through 100s of page
                 return
 
 
