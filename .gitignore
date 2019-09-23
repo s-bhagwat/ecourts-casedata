@@ -1,2 +1,6 @@
 #Pycharm files
-idea/
+.idea/
+__pycache__/
+
+#driver
+geckodriver.log
